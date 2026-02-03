@@ -10,8 +10,9 @@ group :development do
   gem 'pry', '~> 0'
   gem 'rubocop', '~> 1', require: false
   gem 'shotgun', '~> 0', '>= 0.9.2'
-  gem 'sinatra', '~> 3'
-  gem 'thin', '~> 1'
+  gem 'sinatra', '~> 4'
+  gem 'puma', '~> 6'
+  gem 'rack', '>= 3.2.3.0'
 end
 
 group :test do
