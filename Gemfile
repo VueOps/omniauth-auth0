@@ -23,4 +23,5 @@ group :test do
   gem 'simplecov-cobertura', '~> 2'
   gem 'webmock', '~> 3'
   gem 'multi_json', '~> 1'
+  gem 'bigdecimal', '~> 3'
 end

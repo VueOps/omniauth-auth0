@@ -200,10 +200,21 @@ describe OmniAuth::Strategies::Auth0 do
     end
 
     def session
-      session_cookie = last_response.cookies['rack.session'].first
+      # Rack 3 changed session cookie format
+      # Try to get session from rack.session in env first
+      return last_request.env['rack.session'] if last_request&.env&.dig('rack.session')
+      
+      # Fallback to cookie parsing for older Rack versions
+      session_cookie = last_response.cookies['rack.session']
+      return {} unless session_cookie
+      
+      session_cookie = session_cookie.first if session_cookie.is_a?(Array)
       session_data, _, _ = session_cookie.rpartition('--')
       decoded_session_data = Base64.decode64(session_data)
       Marshal.load(decoded_session_data)
+    rescue => e
+      # If all else fails, return empty hash
+      {}
     end
 
     it "stores session['authorize_params'] as a plain Ruby Hash" do

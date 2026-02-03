@@ -1,6 +1,8 @@
 $LOAD_PATH.unshift File.expand_path(__dir__)
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
+ENV['RACK_ENV'] = 'test'
+
 require 'multi_json'
 require 'simplecov'
 SimpleCov.start
@@ -44,6 +46,7 @@ RSpec.configure do |config|
         set :show_exceptions, false
         set :session_secret, '9771aff2c634257053c62ba072c54754bd2cc92739b37e81c3eda505da48c2ec'
         set :session_store, Rack::Session::Cookie
+        disable :protection
       end
 
       use OmniAuth::Builder do
