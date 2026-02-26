@@ -84,7 +84,7 @@ GEM
     puma (6.6.1)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (3.2.4)
+    rack (3.2.5)
     rack-protection (4.2.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
@@ -180,7 +180,7 @@ DEPENDENCIES
   omniauth-auth0!
   pry (~> 0)
   puma (~> 6)
-  rack (>= 3.2.3.0)
+  rack (>= 3.2.5)
   rack-test (~> 2, >= 2.0.2)
   rake (~> 13)
   rspec (~> 3)
